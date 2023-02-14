@@ -2,7 +2,7 @@ import { useState } from "react";
 import Foodvilla from "./assets/Images/Foodvilla.jpg";
 import {Link} from "react-router-dom";
 import "./Header.css";
-
+import useOnline from "./utils/useOnline";
 // Title component for display logo
 const Title = () => (
   <Link to ="/">
@@ -19,7 +19,7 @@ const Title = () => (
 const Header = () => {
   // use useState for user logged in or logged out
   const [isLoggedin, setIsLoggedin] = useState(true);
-
+  const isOnline = useOnline();
   return (
     <div className="header">
       <Title />
@@ -34,10 +34,18 @@ const Header = () => {
           <Link to = "/Contact">
               <li>Contact</li>
           </Link>
-          
           <li>
-            <i className="fa-solid fa-cart-shopping"></i>
+            
+            <i className="fa-solid fa-cart-shopping">Cart</i>
           </li>
+          <Link to="/instamart">
+          <li>
+            instamart
+            
+          </li>
+          </Link>
+          
+          <h1>{isOnline ? "✅" : "🔴"}</h1>
           <li>
             {/* use conditional rendering for login and logout */}
             {isLoggedin ? (

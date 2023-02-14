@@ -4,15 +4,9 @@ import Shimmer from "./Shimmer"; /* This is default export */
 import { swiggy_api_URL } from "../constants";
 import "./Body.css";
 import { Link } from "react-router-dom";
+import { filterData } from "./utils/helper";
+import useOnline from "./utils/useOnline";
 
-
-// Filter the restaurant data according input type
-function filterData(searchText, restaurants) {
-  const filterData = restaurants.filter((restaurant) =>
-    restaurant?.data?.name.toLowerCase().includes(searchText.toLowerCase())
-  );
-  return filterData;
-}
 
 // Body Component for body section: It contain all restaurant cards
 const Body = () => {
@@ -55,6 +49,11 @@ const Body = () => {
       setFilteredRestaurants(restaurants);
     }
   };
+  const isOnLine =useOnline();
+
+  if(!isOnLine){
+    return <h1>🛑offline, please check your internet connection</h1>
+  }
 
   // if allRestaurants is empty don't render restaurants cards
   if (!allRestaurants) return null;
