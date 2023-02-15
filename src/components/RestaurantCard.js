@@ -1,5 +1,6 @@
 import { IMG_CDN_URL } from "../constants";
-import "./RestaurantCard.css";
+import "../index.css"
+
 
 // Restaurant card component: Image, name, cuisine
 const RestaurantCard = ({
@@ -12,7 +13,7 @@ const RestaurantCard = ({
   avgRating,
 }) => {
   return (
-    <div className="card">
+    <div className="card w-56 p-2 m-2 shadow-lg bg-pink-50">
       <img src={IMG_CDN_URL + cloudinaryImageId} />
       <h3>{name}</h3>
       <h5>{cuisines.join(", ")}</h5>

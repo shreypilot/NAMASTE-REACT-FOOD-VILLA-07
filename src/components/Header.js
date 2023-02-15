@@ -1,13 +1,13 @@
 import { useState } from "react";
 import Foodvilla from "./assets/Images/Foodvilla.jpg";
 import {Link} from "react-router-dom";
-import "./Header.css";
+import "../index.css"
 import useOnline from "./utils/useOnline";
 // Title component for display logo
 const Title = () => (
   <Link to ="/">
     <img
-      className="logo"
+      className="h-28 w-28 px-2"
       src={Foodvilla}
       alt="foodvilla logo"
       title="Food villa"
@@ -21,12 +21,12 @@ const Header = () => {
   const [isLoggedin, setIsLoggedin] = useState(true);
   const isOnline = useOnline();
   return (
-    <div className="header">
+    <div className="flex justify-between bg-pink-50 shadow-lg">
       <Title />
       <div className="nav-items">
-        <ul>
+        <ul className="flex py-10 ">
           <Link to = "/">
-              <li>Home</li>
+              <li className="px-2">Home</li>
           </Link>
           <Link to = "/About">
               <li>About</li>

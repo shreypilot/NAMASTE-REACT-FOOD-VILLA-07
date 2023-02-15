@@ -26,7 +26,7 @@ const About = lazy(() => import("./components/About"));
 
 const App = ()=>{
     return(
-        <div className="App">
+        <div >
            <Header />
            <Outlet />
            <Footer />
