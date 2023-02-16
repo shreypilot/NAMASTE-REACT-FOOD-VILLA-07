@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useState , useContext } from "react";
 import Foodvilla from "./assets/Images/Foodvilla.jpg";
 import {Link} from "react-router-dom";
 import "../index.css"
 import useOnline from "./utils/useOnline";
+import userContext from "./utils/userContext";
 // Title component for display logo
 const Title = () => (
   <Link to ="/">
@@ -20,6 +21,7 @@ const Header = () => {
   // use useState for user logged in or logged out
   const [isLoggedin, setIsLoggedin] = useState(true);
   const isOnline = useOnline();
+  const {user} = useContext(userContext);
   return (
     <div className="flex justify-between bg-pink-50 shadow-lg">
       <Title />
@@ -46,6 +48,8 @@ const Header = () => {
           </Link>
           
           <h1>{isOnline ? "✅" : "🔴"}</h1>
+          <span><h1 className="p-10 font-bold text-red-900">{user.name}</h1></span>
+          
           <li>
             {/* use conditional rendering for login and logout */}
             {isLoggedin ? (

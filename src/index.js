@@ -1,4 +1,4 @@
-import React , {lazy, Suspense} from 'react';
+import React , {lazy, Suspense,useState} from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import Header from "./components/Header";
@@ -11,8 +11,10 @@ import RestaurantMenu from './components/RestaurantMenu';
 import ProfileClass from './components/ProfileClass';
 import Shimmer from './components/Shimmer';
 import { createBrowserRouter,RouterProvider,Outlet} from "react-router-dom";
+import userContext from './components/utils/userContext';
 //import Instamart from './components/Instamart';
-
+const Instamart = lazy(() => import("./components/Instamart"));
+const About = lazy(() => import("./components/About"));
 //chunking
 //code spliting
 //dynamic bundling
@@ -20,16 +22,26 @@ import { createBrowserRouter,RouterProvider,Outlet} from "react-router-dom";
 // on demand loading
 //dynamic import
 
-const Instamart = lazy(() => import("./components/Instamart"));
 
-const About = lazy(() => import("./components/About"));
 
 const App = ()=>{
+    const[my,setMy] = useState({
+        name : "shreya",
+        email : "shreypilot@gmail.com"
+    })
     return(
         <div >
-           <Header />
-           <Outlet />
-           <Footer />
+            <Header />
+            <userContext.Provider
+            value={{
+                user:my,
+                setUser:setMy,
+            }}>
+            
+            <Outlet />
+            <Footer />
+            </userContext.Provider>
+           
         </div>
     );
 };
@@ -42,7 +54,10 @@ const appRouter = createBrowserRouter([
         children: [
             {
                 path: "/",
-                element: <Body/>,
+                element: <Body/**  user= {{
+                    name : "shreya",
+                    email : "shreypilot@gmail.com"
+                }}*/ />,//props driling
                 
 
             },

@@ -1,9 +1,9 @@
 import RestaurantCard from "./RestaurantCard";
-import { useEffect, useState } from "react"; /* This is named export */
+import { useEffect, useState,useContext} from "react"; /* This is named export */
 import Shimmer from "./Shimmer"; /* This is default export */
 import { swiggy_api_URL } from "../constants";
 import "../index.css"
-
+import userContext from "./utils/userContext";
 import { Link } from "react-router-dom";
 import { filterData } from "./utils/helper";
 import useOnline from "./utils/useOnline";
@@ -16,7 +16,7 @@ const Body = () => {
   const [allRestaurants, setAllRestaurants] = useState([]);
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
-
+  const {user,setUser} = useContext(userContext)
   // use useEffect for one time call getRestaurants using empty dependency array
   useEffect(() => {
     getRestaurants();
@@ -79,6 +79,19 @@ const Body = () => {
         >
           Search
         </button>
+        <input value={user.name} onChange = {
+          e => setUser({
+            ...user,
+            name: e.target.value
+          })
+        }/>
+        <input value={user.email} onChange = {
+          e => setUser({
+            
+            ...user,
+            email: e.target.value
+          })
+        }/>
       </div>
       {errorMessage && <div className="error-container">{errorMessage}</div>}
 
@@ -91,7 +104,7 @@ const Body = () => {
           {filteredRestaurants.map((restaurant) => {
             return (
               <Link to={"/restaurant/" + restaurant.data.id}>
-              <RestaurantCard key={restaurant.data.id} {...restaurant.data} />
+              <RestaurantCard key={restaurant.data.id} {...restaurant.data} user={user} />{/*props driling*/}
               </Link>
             );
           })}
