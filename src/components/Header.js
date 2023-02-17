@@ -4,6 +4,7 @@ import {Link} from "react-router-dom";
 import "../index.css"
 import useOnline from "./utils/useOnline";
 import userContext from "./utils/userContext";
+import { useSelector } from "react-redux";
 // Title component for display logo
 const Title = () => (
   <Link to ="/">
@@ -22,6 +23,12 @@ const Header = () => {
   const [isLoggedin, setIsLoggedin] = useState(true);
   const isOnline = useOnline();
   const {user} = useContext(userContext);
+  const cartItems = useSelector(store => store.cart.items);
+  console.log(cartItems);
+
+
+
+
   return (
     <div className="flex justify-between bg-pink-50 shadow-lg">
       <Title />
@@ -36,16 +43,15 @@ const Header = () => {
           <Link to = "/Contact">
               <li>Contact</li>
           </Link>
-          <li>
-            
-            <i className="fa-solid fa-cart-shopping">Cart</i>
-          </li>
           <Link to="/instamart">
           <li>
             instamart
-            
           </li>
           </Link>
+          <Link to="/cart">
+            <li>Cart - {cartItems.length} items</li>
+          </Link>
+          
           
           <h1>{isOnline ? "✅" : "🔴"}</h1>
           <span><h1 className="p-10 font-bold text-red-900">{user.name}</h1></span>
