@@ -1,7 +1,7 @@
 import { IMG_CDN_URL } from "../constants";
 import {  useContext } from "react";
 
-import "../index.css"
+//import "../index.css"
 import userContext from "./utils/userContext";
 
 

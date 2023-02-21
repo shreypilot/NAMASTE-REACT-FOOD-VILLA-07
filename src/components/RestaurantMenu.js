@@ -2,7 +2,7 @@ import { useState,useEffect } from "react";
 import { useParams } from "react-router-dom";
 import {IMG_CDN_URL} from "../constants";
 import Shimmer from "./Shimmer";
-import "./RestaurantMenu.css"
+//import "./RestaurantMenu.css"
 import useRestaurant from "./utils/useRestaurant";
 import { addItem,removeItem} from "./utils/cartSlice";
 import { useDispatch } from "react-redux";

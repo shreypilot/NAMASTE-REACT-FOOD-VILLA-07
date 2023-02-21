@@ -1,7 +1,7 @@
 import { useState , useContext } from "react";
 import Foodvilla from "./assets/Images/Foodvilla.jpg";
 import {Link} from "react-router-dom";
-import "../index.css"
+//import "../index.css"
 import useOnline from "./utils/useOnline";
 import userContext from "./utils/userContext";
 import { useSelector } from "react-redux";
@@ -9,6 +9,8 @@ import { useSelector } from "react-redux";
 const Title = () => (
   <Link to ="/">
     <img
+      data-testid = "logo"
+
       className="h-28 w-28 px-2"
       src={Foodvilla}
       alt="foodvilla logo"
@@ -49,11 +51,11 @@ const Header = () => {
           </li>
           </Link>
           <Link to="/cart">
-            <li>Cart - {cartItems.length} items</li>
+            <li data-testid = "cart">Cart - {cartItems.length} items</li>
           </Link>
           
           
-          <h1>{isOnline ? "✅" : "🔴"}</h1>
+          <h1 data-testid = "online-status">{isOnline ? "✅" : "🔴"}</h1>
           <span><h1 className="p-10 font-bold text-red-900">{user.name}</h1></span>
           
           <li>
