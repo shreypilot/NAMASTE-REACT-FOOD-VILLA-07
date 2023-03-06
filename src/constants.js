@@ -9,4 +9,4 @@ export const swiggy_api_URL =
 export const FETCH_MENU_URL ="https://www.swiggy.com/dapi/menu/v4/full?lat=25.2520964&lng=86.9841546&menuId=";
 
 
-  export const shimmer_card_unit = 8;
+export const shimmer_card_unit = 10;

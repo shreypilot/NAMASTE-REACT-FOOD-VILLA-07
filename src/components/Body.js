@@ -2,7 +2,7 @@ import RestaurantCard from "./RestaurantCard";
 import { useEffect, useState,useContext} from "react"; /* This is named export */
 import Shimmer from "./Shimmer"; /* This is default export */
 import { swiggy_api_URL } from "../constants";
-//import "../index.css"
+import "../index.css"
 import userContext from "./utils/userContext";
 import { Link } from "react-router-dom";
 import { filterData } from "./utils/helper";

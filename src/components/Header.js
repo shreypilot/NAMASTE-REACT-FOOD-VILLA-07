@@ -11,7 +11,7 @@ const Title = () => (
     <img
       data-testid = "logo"
 
-      className="h-28 w-28 px-2"
+      className="w-20"
       src={Foodvilla}
       alt="foodvilla logo"
       title="Food villa"
@@ -32,7 +32,7 @@ const Header = () => {
 
 
   return (
-    <div className="flex justify-between bg-pink-50 shadow-lg">
+    <div className="flex justify-between h-20 bg-gray-500 shadow-lg">
       <Title />
       <div className="nav-items">
         <ul className="flex py-10 ">
